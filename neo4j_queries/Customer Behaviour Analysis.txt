@@ -1,0 +1,169 @@
+-------------------------------------------------------------------------------------------------------------------------------------
+############################### CATEGORIZE THE CUSTOMER ####################################
+-------------------------------------------------------------------------------------------------------------------------------------
+CREATE 
+(cc0bb7fe55050a09baee0b:CUSTOMER{name:"shreya",customer_id:"63cc0bb7fe55050a09baee0b",age:33,email:"shreya@shoppingsystem.com",gender:"Female"}),
+(cc0bb7fe55050a09baee08:CUSTOMER{name:"praveen",customer_id:"63cc0bb7fe55050a09baee08",age:36,email:"praveen@shoppingsystem.com",gender:"Male" }),
+(cc0bb7fe55050a09baee09:CUSTOMER{name:"rakshith",customer_id:"63cc0bb7fe55050a09baee09",age:28,email:"rakshith@shoppingsystem.com",gender:"Male"}),
+(cc0bb7fe55050a09baee0a:CUSTOMER{name:"niharika",customer_id:"63cc0bb7fe55050a09baee0a",age:22,email:"niharika@shoppingsystem.com",gender:"Female"}),
+(e3abf0aea7b5b9d5f30716:CUSTOMER{name:"kishore",customer_id:"63e3abf0aea7b5b9d5f30716",age:22,email:"kishore@shoppingsystem.com",gender:"Male" }),
+(e5149a4a1493e6ad0a725a:CUSTOMER{name:"mariano",customer_id:"63e5149a4a1493e6ad0a725a",age:26,email:"mariano@shoppingsystem.com",gender:"Female"}),
+(e5149b4a1493e6ad0a725c:CUSTOMER{name:"frieda",customer_id:"63e5149b4a1493e6ad0a725c", age:37,email:"frieda@shoppingsystem.com",gender:"Female" }),
+(e5149b4a1493e6ad0a725e:CUSTOMER{name:"stanley",customer_id:"63e5149b4a1493e6ad0a725e",age:38,email:"stanley@shoppingsystem.com",gender:"Male"}),
+(e5149b4a1493e6ad0a7260:CUSTOMER{name:"constance",customer_id:"63e5149b4a1493e6ad0a7260",age:29,email:"constance@shoppingsystem.com",gender:"Male" }),
+(e5149b4a1493e6ad0a7262:CUSTOMER{name:"isaias",customer_id:"63e5149b4a1493e6ad0a7262",age:32,email:"isaias@shoppingsystem.com",gender:"Female"}),	
+(e5149b4a1493e6ad0a7264:CUSTOMER{name:"benedict",customer_id:"63e5149b4a1493e6ad0a7264",age:27,email:"benedict@shoppingsystem.com",gender:"Male"}),	
+(e5149b4a1493e6ad0a7266:CUSTOMER{name:"bryana",customer_id:"63e5149b4a1493e6ad0a7266", age:29,email:"bryana@shoppingsystem.com",gender:"Female"}),
+(e5149b4a1493e6ad0a7268:CUSTOMER{name:"brennan",customer_id:"63e5149b4a1493e6ad0a7268",age:24,email:"brennan@shoppingsystem.com",gender:"Male" }),
+(e5149b4a1493e6ad0a726a:CUSTOMER{name:"lucy",customer_id:"63e5149b4a1493e6ad0a726a",age:64,email:"lucy@shoppingsystem.com",gender:"Female"}),
+(e5149b4a1493e6ad0a726c:CUSTOMER{name:"maggie",customer_id:"63e5149b4a1493e6ad0a726c",age:76,email:"maggie@shoppingsystem.com",gender:"Female" }),
+(e5149b4a1493e6ad0a726e:CUSTOMER{name:"drake",customer_id:"63e5149b4a1493e6ad0a726e",age:32,email:"drake@shoppingsystem.com",gender:"Male"}),
+(e5149b4a1493e6ad0a7270:CUSTOMER{name:"ellie",customer_id:"63e5149b4a1493e6ad0a7270",age:26,email:"ellie@shoppingsystem.com",gender:"Female" }),
+(e5149b4a1493e6ad0a7272:CUSTOMER{name:"issac",customer_id:"63e5149b4a1493e6ad0a7272",age:35,email:"issac@shoppingsystem.com",gender:"Male"}),	
+(e5149b4a1493e6ad0a7274:CUSTOMER{name:"avery",customer_id:"63e5149b4a1493e6ad0a7274",age:23,email:"avery@shoppingsystem.com",gender:"Male"}),	
+(e5149b4a1493e6ad0a7276:CUSTOMER{name:"olin",customer_id:"63e5149b4a1493e6ad0a7276", age:89,email:"olin@shoppingsystem.com",gender:"Male"})
+
+CREATE (P519307985:PURCHASE{department:"Clothing",product_id:"P519307985",date:"2013-02-09"}),
+(P280070230:PURCHASE{department:"Health",product_id:"P280070230",date:"2014-08-09"}),
+(P529736000:PURCHASE{department:"Tools",product_id:"P529736000",date:"2015-10-01"}),
+(P225953488:PURCHASE{department:"Jewelry",product_id:"P225953488",date:"2016-12-17"}),
+(P589338424:PURCHASE{department:"Baby",product_id:"P589338424",date:"2017-11-03"}),
+(P635916413:PURCHASE{department:"Electronics",product_id:"P635916413",date:"2018-11-07"}),
+(P139027355:PURCHASE{department:"Automotive",product_id:"P139027355",date:"2019-01-20"}),
+(P291993254:PURCHASE{department:"Computers",product_id:"P291993254",date:"2020-09-16"}),
+(P343692375:PURCHASE{department:"Sports",product_id:"P343692375",date:"2021-02-28"}),
+(P450809569:PURCHASE{department:"Toys",product_id:"P450809569",date:"2022-05-27"}),
+(P567668390:PURCHASE{department:"Shoes",product_id:"P567668390",date:"2022-03-23"}),
+(P651875548:PURCHASE{department:"Grocery",product_id:"P651875548",date:"2013-06-21"}),
+(P832445477:PURCHASE{department:"Books", product_id:"P832445477",date:"2015-12-30"}),
+(P242080700:PURCHASE{department:"Jewellery",product_id:"P242080700",date:"2022-02-14"}),
+(P115146012:PURCHASE{department:"Accessories",product_id:"P115146012",date:"2022-12-25"}),
+(P449461023:PURCHASE{department:"Industrial",product_id:"P449461023",date:"2014-11-19"}),
+(P409162321:PURCHASE{department:"Motorcycle",product_id:"P409162321",date:"2016-03-08"}),
+(P430681064:PURCHASE{department:"Gifts",product_id:"P430681064",date:"2018-10-16"}),
+(P508041995:PURCHASE{department:"Beauty",product_id:"P508041995",date:"2020-11-22"}),
+(P521257588:PURCHASE{department:"Household",product_id:"P521257588",date:"2023-01-08"})
+
+------------------------------------------------------------------------------------------------------
+########################### RELATIONS ##################################
+------------------------------------------------------------------------------------------------------
+
+MATCH (c1:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee0b"}),(p1:PURCHASE{product_id: "P519307985"})
+CREATE (c1) -[:PURCHASES{order_value:500}] ->(p1);
+
+MATCH (c2:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee0b"}),(p2:PURCHASE{product_id:"P280070230"})
+CREATE (c2) -[:PURCHASES{order_value:2000}] ->(p2);
+
+MATCH (c3:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee0b"}),(p3:PURCHASE{product_id:"P529736000"})
+CREATE (c3) -[:PURCHASES{order_value:1238}] ->(p3);
+
+MATCH (c4:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee0b"}),(p4:PURCHASE{product_id:"P225953488"})
+CREATE (c4) -[:PURCHASES{order_value:5700}] ->(p4);
+
+MATCH (c5:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee08"}),(p5:PURCHASE{product_id:"P589338424"})
+CREATE (c5) -[:PURCHASES{order_value:6500}] ->(p5);
+
+MATCH (c6:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee08"}),(p6:PURCHASE{product_id:"P635916413"})
+CREATE (c6) -[:PURCHASES{order_value:8500}] ->(p6);
+
+MATCH (c7:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee09"}),(p7:PURCHASE{product_id:"P139027355"})
+CREATE (c7) -[:PURCHASES{order_value:4500}] ->(p7);
+
+MATCH (c8:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee09"}),(p8:PURCHASE{product_id:"P291993254"})
+CREATE (c8) -[:PURCHASES{order_value:800}] ->(p8);
+
+MATCH (c9:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee0a"}),(p9:PURCHASE{product_id:"P343692375"})
+CREATE (c9) -[:PURCHASES{order_value:6700}] ->(p9);
+
+MATCH (c10:CUSTOMER{customer_id:"63e3abf0aea7b5b9d5f30716"}),(p10:PURCHASE{product_id:"P450809569"})
+CREATE (c10) -[:PURCHASES{order_value:7800}] ->(p10);
+
+MATCH (c11:CUSTOMER{customer_id:"63e5149a4a1493e6ad0a725a"}),(p11:PURCHASE{product_id:"P567668390"})
+CREATE (c11) -[:PURCHASES{order_value:200}] ->(p11);
+
+MATCH (c12:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a725c"}),(p12:PURCHASE{product_id:"P651875548"})
+CREATE (c12) -[:PURCHASES{order_value:900}] ->(p12);
+
+MATCH (c13:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a7260"}),(p13:PURCHASE{product_id:"P832445477"})
+CREATE (c13) -[:PURCHASES{order_value:1000}] ->(p13);
+
+MATCH (c14:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a7262"}),(p14:PURCHASE{product_id:"P242080700"})
+CREATE (c14) -[:PURCHASES{order_value:4500}] ->(p14);
+
+MATCH (c15:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a7268"}),(p15:PURCHASE{product_id:"P115146012"})
+CREATE (c15) -[:PURCHASES{order_value:3090}] ->(p15);
+
+MATCH (c16:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a726c"}),(p16:PURCHASE{product_id:"P449461023"})
+CREATE (c16) -[:PURCHASES{order_value:6700}] ->(p16);
+
+MATCH (c17:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a7272"}),(p17:PURCHASE{product_id:"P409162321"})
+CREATE (c17) -[:PURCHASES{order_value:50}] ->(p17);
+
+MATCH (c18:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a7274"}),(p18:PURCHASE{product_id:"P430681064"})
+CREATE (c18) -[:PURCHASES{order_value:100}] ->(p18);
+
+MATCH (c19:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a7276"}),(p19:PURCHASE{product_id:"P508041995"})
+CREATE (c19) -[:PURCHASES{order_value:567}] ->(p19);
+
+MATCH (c20:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a726e"}),(p20:PURCHASE{product_id:"P508041995"})
+CREATE (c20) -[:PURCHASES{order_value:1999}] ->(p20);
+
+----------------------------------------------------------------
+###########################Query################################
+----------------------------------------------------------------
+#Setting the parameters to avoid the hardcoding in the query
+
+:params                                            
+{
+  Order_Value_Threshold : 3000,
+  Start_date : "2022-03-23",
+  End_date: "2023-02-09"
+}
+
+MATCH (c:CUSTOMER)-[r:PURCHASES]-(p:PURCHASE)
+WHERE p.date > $Start_date AND p.date < $End_date
+WITH c, sum(r.order_value) as totalOrderValue
+RETURN c.customer_id,totalOrderValue,
+CASE 
+	WHEN totalOrderValue > $Order_Value_Threshold THEN 1
+	ELSE  0
+END AS valuable_customer
+
+-------------------------------------------------------------------------------------------------------------------------------------
+############################### MONITORING WEBSITE VISITS ####################################
+-------------------------------------------------------------------------------------------------------------------------------------
+CREATE (w1:WEBSITE{id:"www.shopping_system.com"})
+
+
+MATCH (c2:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a726c"}),(w1:WEBSITE{id:"www.shopping_system.com"})
+CREATE (c2) -[:VIEWS] ->(w1);
+
+MATCH (c3:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee08"}),(w1:WEBSITE{id:"www.shopping_system.com"})
+CREATE (c3) -[:VIEWS] ->(w1);
+
+MATCH (c1:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a7270"}),(w1:WEBSITE{id:"www.shopping_system.com"})
+CREATE (c1) -[:VIEWS] ->(w1);
+
+MATCH (c1:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a7274"}),(w1:WEBSITE{id:"www.shopping_system.com"})
+CREATE (c1) -[:VIEWS] ->(w1);
+
+MATCH (c2:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a725c"}),(w1:WEBSITE{id:"www.shopping_system.com"})
+CREATE (c2) -[:VIEWS] ->(w1);
+
+MATCH (c3:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee09"}),(w1:WEBSITE{id:"www.shopping_system.com"})
+CREATE (c3) -[:VIEWS] ->(w1);
+
+MATCH (c1:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a7274"}),(w1:WEBSITE{id:"www.shopping_system.com"})
+CREATE (c1) -[:VIEWS] ->(w1);
+
+MATCH (c2:CUSTOMER{customer_id:"63e5149b4a1493e6ad0a725c"}),(w1:WEBSITE{id:"www.shopping_system.com"})
+CREATE (c2) -[:VIEWS] ->(w1);
+
+MATCH (c3:CUSTOMER{customer_id:"63cc0bb7fe55050a09baee09"}),(w1:WEBSITE{id:"www.shopping_system.com"})
+CREATE (c3) -[:VIEWS] ->(w1);
+
+----------------------------------------------------------------
+###########################Query################################
+----------------------------------------------------------------
+
+MATCH (c:CUSTOMER)-->(w1:WEBSITE{id:"www.shopping_system.com"}) RETURN c.customer_id, count(c);

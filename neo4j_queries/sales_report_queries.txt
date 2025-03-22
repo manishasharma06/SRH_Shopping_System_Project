@@ -1,0 +1,336 @@
+Neo4j Sales report:
+
+#fake data used
+
+CATEGORY:
+
+CREATE
+(beaty:CATEGORY{name:"Beauty"}),
+(electronic:CATEGORY{name:"Electronics"}),
+(household:CATEGORY{name:"Household"});
+
+COUNTRY:
+
+CREATE(DE:COUNTRY{name:"Germany"});
+
+STATE:
+
+CREATE(RP:STATE{name:"Rheinland-Pfalz"});
+CREATE(BW:STATE{name:"Baden-Württemberg"});
+CREATE (BA:STATE{name:"Bavaria"});
+
+PRODUCTS:
+
+ELECTRONIC:
+
+CREATE
+(lap:PRODUCT{name:"Laptops"}),
+(phone:PRODUCT{name:"SmartPhones"}),
+(Cam:PRODUCT{name:"Camera"}),
+(Watch:PRODUCT{name:"SmartWatchs"}),
+(wash:PRODUCT{name:"WashingMachines"}),
+(TV:PRODUCT{name:"Television"}),
+(mix:PRODUCT{name:"Mixer"}),
+(fan:PRODUCT{name:"AirCooler"});
+
+BEAUTY:
+
+CREATE
+(lotion:PRODUCT{name:"Bodylotion"}),
+(soap:PRODUCT{name:"Soap"}),
+(shamp:PRODUCT{name:"Shampoo"}),
+(powder:PRODUCT{name:"Face&bodypowder"}),
+(face:PRODUCT{name:"FaceWash"}),
+(perf:PRODUCT{name:"Perfum"}),
+(boil:PRODUCT{name:"BeardOil"});
+
+HOUSEHOLD:
+
+CREATE
+(cleaner:PRODUCT{name:"Floor&toiletcleaner"}),
+(lad:PRODUCT{name:"ladder"}),
+(mop:PRODUCT{name:"Mop"}),
+(fresh:PRODUCT{name:"Room&toiletfreshern"}),
+(broom:PRODUCT{name:"broomsticks"}),
+(stove:PRODUCT{name:"KitchenStoveBurner"}),
+(Scrub:PRODUCT{name:"Scrumber"}),
+(wad:PRODUCT{name:"wooden chair"}),
+(span:PRODUCT{name:"Spanner"});
+
+RELATIONS:
+
+#COUNTRY - IS_PART_OF - STATE
+
+MATCH (RP:STATE{name:"Rheinland-Pfalz"}), (DE:COUNTRY{name:"Germany"})
+CREATE (RP) -[:IS_PART_OF]->(DE);
+MATCH (BW:STATE{name:"Baden-Württemberg"}), (DE:COUNTRY{name:"Germany"})
+CREATE(BW)-[:IS_PART_OF]->(DE);
+MATCH (BA:STATE{name:"Bavaria"}), (DE:COUNTRY{name:"Germany"})
+CREATE(BA)-[:IS_PART_OF]->(DE);
+
+#PRODUCT - BELONGS_TO - CATEGORY 
+
+ELECTRONICS:
+
+MATCH (lap:PRODUCT{name:"Laptops"}), (electronic:CATEGORY{name:"Electronics"})
+CREATE (lap) -[:BELONGS_TO]-> (electronic);
+MATCH (phone:PRODUCT{name:"SmartPhones"}), (electronic:CATEGORY{name:"Electronics"})
+CREATE (phone) -[:BELONGS_TO]-> (electronic);
+MATCH (Cam:PRODUCT{name:"Camera"}),(electronic:CATEGORY{name:"Electronics"})
+CREATE (Cam) -[:BELONGS_TO]-> (electronic);
+MATCH (Watch:PRODUCT{name:"SmartWatchs"}),(electronic:CATEGORY{name:"Electronics"})
+CREATE (Watch) -[:BELONGS_TO]-> (electronic);
+MATCH (wash:PRODUCT{name:"WashingMachines"}),(electronic:CATEGORY{name:"Electronics"})
+CREATE (wash) -[:BELONGS_TO]-> (electronic);
+MATCH (TV:PRODUCT{name:"Television"}),(electronic:CATEGORY{name:"Electronics"})
+CREATE (TV) -[:BELONGS_TO]-> (electronic);
+MATCH (mix:PRODUCT{name:"Mixer"}),(electronic:CATEGORY{name:"Electronics"})
+CREATE (mix) -[:BELONGS_TO]-> (electronic);
+MATCH (fan:PRODUCT{name:"AirCooler"}),(electronic:CATEGORY{name:"Electronics"})
+CREATE (fan) -[:BELONGS_TO]-> (electronic);
+
+BEAUTY:
+
+MATCH (lotion:PRODUCT{name:"Bodylotion"}), (beaty:CATEGORY{name:"Beauty"})
+CREATE (lotion) -[:BELONGS_TO]-> (beaty);
+MATCH (soap:PRODUCT{name:"Soap"}), (beaty:CATEGORY{name:"Beauty"})
+CREATE (soap) -[:BELONGS_TO]-> (beaty);
+MATCH (shamp:PRODUCT{name:"Shampoo"}),(beaty:CATEGORY{name:"Beauty"})
+CREATE (shamp) -[:BELONGS_TO]-> (beaty);
+MATCH (powder:PRODUCT{name:"Face&bodypowder"}),(beaty:CATEGORY{name:"Beauty"})
+CREATE (powder) -[:BELONGS_TO]-> (beaty);
+MATCH (face:PRODUCT{name:"FaceWash"}),(beaty:CATEGORY{name:"Beauty"})
+CREATE (face) -[:BELONGS_TO]-> (beaty);
+MATCH (perf:PRODUCT{name:"Perfum"}),(beaty:CATEGORY{name:"Beauty"})
+CREATE (perf) -[:BELONGS_TO]-> (beaty);
+MATCH (boil:PRODUCT{name:"BeardOil"}),(beaty:CATEGORY{name:"Beauty"})
+CREATE (boil) -[:BELONGS_TO]-> (beaty);
+
+#HOUSEHOLD:
+
+MATCH(cleaner:PRODUCT{name:"Floor&toiletcleaner"}),(household:CATEGORY{name:"Household"})
+CREATE (cleaner) -[:BELONGS_TO]-> (household);
+MATCH(lad:PRODUCT{name:"ladder"}),(household:CATEGORY{name:"Household"})
+CREATE (lad) -[:BELONGS_TO]-> (household);
+MATCH(mop:PRODUCT{name:"Mop"}),(household:CATEGORY{name:"Household"})
+CREATE (mop) -[:BELONGS_TO]-> (household);
+MATCH(fresh:PRODUCT{name:"Room&toiletfreshern"}),(household:CATEGORY{name:"Household"})
+CREATE (fresh) -[:BELONGS_TO]-> (household);
+MATCH(broom:PRODUCT{name:"broomsticks"}),(household:CATEGORY{name:"Household"})
+CREATE (broom) -[:BELONGS_TO]-> (household);
+MATCH(stove:PRODUCT{name:"KitchenStoveBurner"}),(household:CATEGORY{name:"Household"})
+CREATE (stove) -[:BELONGS_TO]-> (household);
+MATCH(Scrub:PRODUCT{name:"Scrumber"}),(household:CATEGORY{name:"Household"})
+CREATE (Scrub) -[:BELONGS_TO]-> (household);
+MATCH(wad:PRODUCT{name:"Wooden chair"}),(household:CATEGORY{name:"Household"})
+CREATE (wad) -[:BELONGS_TO]-> (household);
+MATCH(span:PRODUCT{name:"Spanner"}),(household:CATEGORY{name:"Household"})
+CREATE (span) -[:BELONGS_TO]-> (household);
+
+PRODUCT SOLD BASED ON REGION
+
+ELECTRONIC:
+
+#Rheinland-Pfalz
+
+MATCH (lap:PRODUCT{name:"Laptops"}), (RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (lap) -[:SOLD_ON {sold_qtn : 5606}]-> (RP);
+MATCH (phone:PRODUCT{name:"SmartPhones"}), (RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (phone) -[:SOLD_ON {sold_qtn : 8046}]-> (RP);
+MATCH (Cam:PRODUCT{name:"Camera"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (Cam) -[:SOLD_ON {sold_qtn : 5686}]-> (RP);
+MATCH (Watch:PRODUCT{name:"SmartWatchs"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (Watch) -[:SOLD_ON {sold_qtn : 9846}]-> (RP);
+MATCH (wash:PRODUCT{name:"WashingMachines"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (wash) -[:SOLD_ON {sold_qtn : 4192}]-> (RP);
+MATCH (TV:PRODUCT{name:"Television"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (TV) -[:SOLD_ON {sold_qtn : 6584}]-> (RP);
+MATCH (mix:PRODUCT{name:"Mixer"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (mix) -[:SOLD_ON {sold_qtn : 5684}]-> (RP);
+MATCH (fan:PRODUCT{name:"AirCooler"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (fan) -[:SOLD_ON {sold_qtn : 4841}]-> (RP);
+
+#Baden-Württemberg
+
+MATCH (lap:PRODUCT{name:"Laptops"}), (BW:STATE{name:"Baden-Württemberg"})
+CREATE (lap) -[:SOLD_ON {sold_qtn : 6686}]-> (BW);
+MATCH (phone:PRODUCT{name:"SmartPhones"}), (BW:STATE{name:"Baden-Württemberg"})
+CREATE (phone) -[:SOLD_ON {sold_qtn : 8846}]-> (BW);
+MATCH (Cam:PRODUCT{name:"Camera"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (Cam) -[:SOLD_ON {sold_qtn : 4699}]-> (BW);
+MATCH (Watch:PRODUCT{name:"SmartWatchs"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (Watch) -[:SOLD_ON {sold_qtn : 6846}]-> (BW);
+MATCH (wash:PRODUCT{name:"WashingMachines"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (wash) -[:SOLD_ON {sold_qtn : 8292}]-> (BW);
+MATCH (TV:PRODUCT{name:"Television"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (TV) -[:SOLD_ON {sold_qtn : 6046}]-> (BW);
+MATCH (mix:PRODUCT{name:"Mixer"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (mix) -[:SOLD_ON {sold_qtn : 9684}]-> (BW);
+MATCH (fan:PRODUCT{name:"AirCooler"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (fan) -[:SOLD_ON {sold_qtn : 4451}]-> (BW);
+
+#Bavaria
+
+MATCH (lap:PRODUCT{name:"Laptops"}), (BA:STATE{name:"Bavaria"})
+CREATE (lap) -[:SOLD_ON {sold_qtn : 6846}]-> (BA);
+MATCH (phone:PRODUCT{name:"SmartPhones"}), (BA:STATE{name:"Bavaria"})
+CREATE (phone) -[:SOLD_ON {sold_qtn : 8846}]-> (BA);
+MATCH (Cam:PRODUCT{name:"Camera"}),(BA:STATE{name:"Bavaria"})
+CREATE (Cam) -[:SOLD_ON {sold_qtn : 4686}]-> (BA);
+MATCH (Watch:PRODUCT{name:"SmartWatchs"}),(BA:STATE{name:"Bavaria"})
+CREATE (Watch) -[:SOLD_ON {sold_qtn : 6846}]-> (BA);
+MATCH (wash:PRODUCT{name:"WashingMachines"}),(BA:STATE{name:"Bavaria"})
+CREATE (wash) -[:SOLD_ON {sold_qtn : 5892}]-> (BA);
+MATCH (TV:PRODUCT{name:"Television"}),(BA:STATE{name:"Bavaria"})
+CREATE (TV) -[:SOLD_ON {sold_qtn : 6084}]-> (BA);
+MATCH (mix:PRODUCT{name:"Mixer"}),(BA:STATE{name:"Bavaria"})
+CREATE (mix) -[:SOLD_ON {sold_qtn : 9684}]-> (BA);
+MATCH (fan:PRODUCT{name:"AirCooler"}),(BA:STATE{name:"Bavaria"})
+CREATE (fan) -[:SOLD_ON {sold_qtn : 4045}]-> (BA);
+
+BEAUTY:
+
+Rheinland-Pfalz
+
+MATCH (lotion:PRODUCT{name:"Bodylotion"}), (RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (lotion) -[:SOLD_ON {sold_qtn : 5846}]-> (RP);
+MATCH (soap:PRODUCT{name:"Soap"}), (RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (soap) -[:SOLD_ON {sold_qtn : 5684}]-> (RP);
+MATCH (shamp:PRODUCT{name:"Shampoo"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (shamp) -[:SOLD_ON {sold_qtn : 5696}]-> (RP);
+MATCH (powder:PRODUCT{name:"Face&bodypowder"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (powder) -[:SOLD_ON {sold_qtn : 6586}]-> (RP);
+MATCH (face:PRODUCT{name:"FaceWash"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (face) -[:SOLD_ON {sold_qtn : 5664}]-> (RP);
+MATCH (perf:PRODUCT{name:"Perfum"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (perf) -[:SOLD_ON {sold_qtn : 5654}]-> (RP);
+MATCH (boil:PRODUCT{name:"BeardOil"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (boil) -[:SOLD_ON {sold_qtn : 5684}]-> (RP);
+
+#Baden-Württemberg
+
+MATCH (lotion:PRODUCT{name:"Bodylotion"}), (BW:STATE{name:"Baden-Württemberg"})
+CREATE (lotion) -[:SOLD_ON {sold_qtn : 5678}]-> (BW);
+MATCH (soap:PRODUCT{name:"Soap"}), (BW:STATE{name:"Baden-Württemberg"})
+CREATE (soap) -[:SOLD_ON {sold_qtn : 5681}]-> (BW);
+MATCH (shamp:PRODUCT{name:"Shampoo"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (shamp) -[:SOLD_ON {sold_qtn : 5616}]-> (BW);
+MATCH (powder:PRODUCT{name:"Face&bodypowder"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (powder) -[:SOLD_ON {sold_qtn : 4146}]-> (BW);
+MATCH (face:PRODUCT{name:"FaceWash"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (face) -[:SOLD_ON {sold_qtn : 6746}]-> (BW);
+MATCH (perf:PRODUCT{name:"Perfum"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (perf) -[:SOLD_ON {sold_qtn : 10846}]-> (BW);
+MATCH (boil:PRODUCT{name:"BeardOil"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (boil) -[:SOLD_ON {sold_qtn : 3046}]-> (BW);
+
+#Bavaria
+
+MATCH (lotion:PRODUCT{name:"Bodylotion"}), (BA:STATE{name:"Bavaria"})
+CREATE (lotion) -[:SOLD_ON {sold_qtn : 7846}]-> (BA);
+MATCH (soap:PRODUCT{name:"Soap"}), (BA:STATE{name:"Bavaria"})
+CREATE (soap) -[:SOLD_ON {sold_qtn : 8346}]-> (BA);
+MATCH (shamp:PRODUCT{name:"Shampoo"}),(BA:STATE{name:"Bavaria"})
+CREATE (shamp) -[:SOLD_ON {sold_qtn : 9846}]-> (BA);
+MATCH (powder:PRODUCT{name:"Face&bodypowder"}),(BA:STATE{name:"Bavaria"})
+CREATE (powder) -[:SOLD_ON {sold_qtn : 4646}]-> (BA);
+MATCH (face:PRODUCT{name:"FaceWash"}),(BA:STATE{name:"Bavaria"})
+CREATE (face) -[:SOLD_ON {sold_qtn : 2846}]-> (BA);
+MATCH (perf:PRODUCT{name:"Perfum"}),(BA:STATE{name:"Bavaria"})
+CREATE (perf) -[:SOLD_ON {sold_qtn : 10846}]-> (BA);
+MATCH (boil:PRODUCT{name:"BeardOil"}),(BA:STATE{name:"Bavaria"})
+CREATE (boil) -[:SOLD_ON {sold_qtn : 8046}]-> (BA);
+
+HOUSEHOLD:
+
+#Rheinland-Pfalz
+
+MATCH(cleaner:PRODUCT{name:"Floor&toiletcleaner"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (cleaner) -[:SOLD_ON {sold_qtn : 5695}]-> (RP);
+MATCH(lad:PRODUCT{name:"ladder"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (lad) -[:SOLD_ON {sold_qtn : 5846}]-> (RP);
+MATCH(mop:PRODUCT{name:"Mop"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (mop) -[:SOLD_ON {sold_qtn : 5946}]-> (RP);
+MATCH(fresh:PRODUCT{name:"Room&toiletfreshern"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (fresh) -[:SOLD_ON {sold_qtn : 8846}]-> (RP);
+MATCH(broom:PRODUCT{name:"broomsticks"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (broom) -[:SOLD_ON {sold_qtn : 7846}]-> (RP);
+MATCH(stove:PRODUCT{name:"KitchenStoveBurner"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (stove) -[:SOLD_ON {sold_qtn : 2846}]-> (RP);
+MATCH(Scrub:PRODUCT{name:"Scrumber"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (Scrub) -[:SOLD_ON {sold_qtn : 4846}]-> (RP);
+MATCH(wad:PRODUCT{name:"Wooden chair"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (wad) -[:SOLD_ON {sold_qtn : 6446}]-> (RP);
+MATCH(span:PRODUCT{name:"Spanner"}),(RP:STATE{name:"Rheinland-Pfalz"})
+CREATE (span) -[:SOLD_ON {sold_qtn : 6846}]-> (RP);
+
+#Baden-Württemberg
+
+MATCH(cleaner:PRODUCT{name:"Floor&toiletcleaner"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (cleaner) -[:SOLD_ON {sold_qtn : 5846}]-> (BW);
+MATCH(lad:PRODUCT{name:"ladder"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (lad) -[:SOLD_ON {sold_qtn : 5684}]-> (BW);
+MATCH(mop:PRODUCT{name:"Mop"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (mop) -[:SOLD_ON {sold_qtn : 5686}]-> (BW);
+MATCH(fresh:PRODUCT{name:"Room&toiletfreshern"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (fresh) -[:SOLD_ON {sold_qtn : 6846}]-> (BW);
+MATCH(broom:PRODUCT{name:"broomsticks"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (broom) -[:SOLD_ON {sold_qtn : 4686}]-> (BW);
+MATCH(stove:PRODUCT{name:"KitchenStoveBurner"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (stove) -[:SOLD_ON {sold_qtn : 5636}]-> (BW);
+MATCH(Scrub:PRODUCT{name:"Scrumber"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (Scrub) -[:SOLD_ON {sold_qtn : 5846}]-> (BW);
+MATCH(wad:PRODUCT{name:"Wooden chair"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (wad) -[:SOLD_ON {sold_qtn : 5686}]-> (BW);
+MATCH(span:PRODUCT{name:"Spanner"}),(BW:STATE{name:"Baden-Württemberg"})
+CREATE (span) -[:SOLD_ON {sold_qtn : 9846}]-> (BW);
+
+#Bavaria
+
+MATCH(cleaner:PRODUCT{name:"Floor&toiletcleaner"}),(BA:STATE{name:"Bavaria"})
+CREATE (cleaner) -[:SOLD_ON {sold_qtn : 5846}]-> (BA);
+MATCH(lad:PRODUCT{name:"ladder"}),(BA:STATE{name:"Bavaria"})
+CREATE (lad) -[:SOLD_ON {sold_qtn : 5684}]-> (BA);
+MATCH(mop:PRODUCT{name:"Mop"}),(BA:STATE{name:"Bavaria"})
+CREATE (mop) -[:SOLD_ON {sold_qtn : 5686}]-> (BA);
+MATCH(fresh:PRODUCT{name:"Room&toiletfreshern"}),(BA:STATE{name:"Bavaria"})
+CREATE (fresh) -[:SOLD_ON {sold_qtn : 6846}]-> (BA);
+MATCH(broom:PRODUCT{name:"broomsticks"}),(BA:STATE{name:"Bavaria"})
+CREATE (broom) -[:SOLD_ON {sold_qtn : 5686}]-> (BA);
+MATCH(stove:PRODUCT{name:"KitchenStoveBurner"}),(BA:STATE{name:"Bavaria"})
+CREATE (stove) -[:SOLD_ON {sold_qtn : 5636}]-> (BA);
+MATCH(Scrub:PRODUCT{name:"Scrumber"}),(BA:STATE{name:"Bavaria"})
+CREATE (Scrub) -[:SOLD_ON {sold_qtn : 5846}]-> (BA);
+MATCH(wad:PRODUCT{name:"Wooden chair"}),(BA:STATE{name:"Bavaria"})
+CREATE (wad) -[:SOLD_ON {sold_qtn : 5686}]-> (BA);
+MATCH(span:PRODUCT{name:"Spanner"}),(BA:STATE{name:"Bavaria"})
+CREATE (span) -[:SOLD_ON {sold_qtn : 9846}]-> (BA);
+
+QUERY:
+
+To filter based on region :
+
+MATCH (p:PRODUCT)<-[:SOLD_ON]->(s:STATE)  
+WHERE s.name ="Rheinland-Pfalz" 
+RETURN p.name as Product_Name,s.name as Region
+ 
+To get the minimum quantity of product sold:
+
+MATCH (C:CATEGORY)-[b:BELONGS_TO]-(P:PRODUCT)-[r:SOLD_ON]-(S:STATE)
+RETURN (min(r.sold_qtn)) as MIN_Sold_Quantity , P.name as Product_Name, C.name as Category_Name,S.name as Region order by MIN_Sold_Quantity 
+
+To get the maximum quantity of product sold:
+
+MATCH (C:CATEGORY)-[b:BELONGS_TO]-(P:PRODUCT)-[r:SOLD_ON]-(S:STATE)
+RETURN (max(r.sold_qtn)) as MAX_Sold_Quantity , P.name as Product_Name, C.name as Category_Name,S.name as Region order by MAX_Sold_Quantity 
+
+To get the average quantity of product sold:
+
+MATCH (C:CATEGORY)-[b:BELONGS_TO]-(P:PRODUCT)-[r:SOLD_ON]-(S:STATE)
+RETURN round(avg(r.sold_qtn)) as AVG_Sold_Quantity, S.name as Region, C.name as Category_Name
+
+To filter with sold_qtn conditions :
+
+MATCH (P:PRODUCT)-[r:SOLD_ON]-(S:STATE) 
+WHERE r.sold_qtn > 5000 
+RETURN P.name as Product_Name,r.sold_qtn as Sold_Qunatity,S.name as Region order by r.sold_qtn asc
